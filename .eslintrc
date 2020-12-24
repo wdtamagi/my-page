@@ -30,7 +30,6 @@
     ".vercel/*",
     "node_modules/*",
     "next.config.js",
-    "postcss.config.js",
     "stylelint.config.js"
   ],
   "rules": {

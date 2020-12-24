@@ -2,9 +2,10 @@ import {
   faBriefcase,
   faGraduationCap,
 } from '@fortawesome/free-solid-svg-icons';
-import indefinite from 'indefinite';
 import { InferGetStaticPropsType } from 'next';
 import React from 'react';
+import { jsx, css } from '@emotion/react';
+
 import { getCMSIntegration } from '../cms/';
 import AboutMe from '../components/Articles/AboutMe';
 import ContactInformation from '../components/Articles/ContactInformation';
@@ -43,20 +44,33 @@ export const getStaticProps = async () => {
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const ResumePage = (props: Props): JSX.Element => {
-  const {
-    educationalExperiences,
-    links,
-    personalInformation,
-    professionalExperiences,
-    skills,
-  } = props;
-  const fullName = getFullName(personalInformation);
-  const jobTitle = indefinite(personalInformation.job_title);
-  const CMS = getCMSIntegration();
+  // const {
+  //   educationalExperiences,
+  //   links,
+  //   personalInformation,
+  //   professionalExperiences,
+  //   skills,
+  // } = props;
+  // const fullName = getFullName(personalInformation);
+  // const jobTitle = personalInformation.job_title;
+  // const CMS = getCMSIntegration();
 
   return (
-    <>
-      <PageHead
+    <div
+      css={css`
+        width: 100%;
+        height: 100%;
+        background-color: red;
+      `}
+    >
+      TESTE
+    </div>
+  );
+};
+
+export default ResumePage;
+
+/* <PageHead
         description={`Professional résumé for ${fullName}, ${jobTitle} living in ${personalInformation.location}.`}
         personalInformation={personalInformation}
         title={`Résumé | ${fullName} | ${personalInformation.location}`}
@@ -123,9 +137,4 @@ const ResumePage = (props: Props): JSX.Element => {
         <HobbiesAndInterests personalInformation={personalInformation} />
       </Section>
 
-      <Footer personalInformation={personalInformation} links={links} />
-    </>
-  );
-};
-
-export default ResumePage;
+      <Footer personalInformation={personalInformation} links={links} /> */

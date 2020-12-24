@@ -3,7 +3,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { AppPropsType } from 'next/dist/next-server/lib/utils';
 import Head from 'next/head';
 import React from 'react';
-import '../styles/globals.scss';
+
+import { GlobalStyle } from './GlobalStyle';
 
 config.autoAddCss = false;
 library.add(fab);
@@ -11,6 +12,7 @@ library.add(fab);
 const MyApp = ({ Component, pageProps }: AppPropsType): JSX.Element => {
   return (
     <>
+      {GlobalStyle}
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>

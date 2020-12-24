@@ -24,19 +24,16 @@ const ContactInformation = (props: Props): JSX.Element => {
             <div className="col">{personalInformation.location}</div>
           </div>
         </li>
-        {privateInformation &&
-          privateInformation.map((privateField) => (
-            <li key={privateField.label}>
-              <div className="row mt-md-0 mt-xxxs no-paragraph-margins">
-                <div className="col-lg-2 col-sm-3">
-                  <strong>{privateField.label}:</strong>
-                </div>
-                <div className="col">
-                  <CMS.RichTextComponent richText={privateField.content} />
-                </div>
-              </div>
-            </li>
-          ))}
+        {personalInformation.email ? (
+          <li>
+            <a href={`mailto:${personalInformation.email}`}>
+              {personalInformation.email}
+            </a>
+          </li>
+        ) : null}
+        {personalInformation.phone ? (
+          <li>{personalInformation.phone}</li>
+        ) : null}
       </ul>
     </article>
   );

@@ -6,5 +6,7 @@ interface CMSPersonalInformation<RichTextType> {
   id: string;
   job_title: string;
   location: string;
+  email: string;
+  phone: string;
   twitter_username?: string;
 }
