@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -11,13 +10,27 @@
       "esnext"
     ],
     "module": "ESNext",
-    "moduleResolution": "Node",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": false,
     "target": "es5",
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "rootDirs": ["src"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
   },
   "exclude": [
     "node_modules"
