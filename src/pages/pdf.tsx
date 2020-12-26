@@ -1,35 +1,39 @@
-import {
-  faBriefcase,
-  faGraduationCap,
-} from '@fortawesome/free-solid-svg-icons';
-import indefinite from 'indefinite';
 import { InferGetStaticPropsType } from 'next';
-import React from 'react';
-import { getCMSIntegration } from '../cms';
-import AboutMe from '../components/Articles/AboutMe';
-import ContactInformation from '../components/Articles/ContactInformation';
-import HobbiesAndInterests from '../components/Articles/HobbiesAndInterests';
-import EducationItem from '../components/EducationItem/EducationItem';
-import Header from '../components/Header/Header';
-import PageHead from '../components/PageHead';
-import ProfessionalItem from '../components/ProfessionalItem/ProfessionalItem';
-import Section from '../components/Section/Section';
-import SectionHeader from '../components/SectionHeader/SectionHeader';
-import Skills from '../components/Skills/Skills';
-import { formatDate, getFullName } from '../helpers';
-import styles from '../styles/pdf.module.scss';
+import React, { FC } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const getStaticProps = async () => {
+import { getCMSIntegration } from 'src/cms';
+import {
+  CMSPersonalInformation,
+  CMSEducationalExperience,
+  CMSLink,
+  CMSPRofessionalExperience,
+  CMSSkills,
+  useResumeStore,
+} from 'src/store/useResumeStore';
+
+import Resume from './resume/components/Resume';
+
+export const getStaticProps = async (): Promise<{
+  props: {
+    educationalExperiences: CMSEducationalExperience[];
+    links: CMSLink[];
+    personalInformation: CMSPersonalInformation;
+    professionalExperiences: CMSPRofessionalExperience[];
+    skills: CMSSkills[];
+  };
+  revalidate: number;
+}> => {
   const CMS = getCMSIntegration();
   const personalInformation = await CMS.getPersonalInformation();
   const professionalExperiences = await CMS.getProfessionalExperiences();
   const educationalExperiences = await CMS.getEducationalExperiences();
   const skills = await CMS.getSkills();
+  const links = await CMS.getLinks();
 
   return {
     props: {
       educationalExperiences,
+      links,
       personalInformation,
       professionalExperiences,
       skills,
@@ -38,94 +42,25 @@ export const getStaticProps = async () => {
   };
 };
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type ResumePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ResumePage = (props: Props): JSX.Element => {
-  const {
-    educationalExperiences,
-    personalInformation,
-    professionalExperiences,
-    skills,
-  } = props;
-  const fullName = getFullName(personalInformation);
-  const jobTitle = indefinite(personalInformation.job_title);
-  const CMS = getCMSIntegration();
+const ResumePage: FC<ResumePageProps> = ({
+  personalInformation,
+  educationalExperiences,
+  links,
+  professionalExperiences,
+  skills,
+}) => {
+  const set = useResumeStore((s) => s.set);
+  set((s) => {
+    s.educationalExperiences = educationalExperiences;
+    s.links = links;
+    s.personalInformation = personalInformation;
+    s.professionalExperiences = professionalExperiences;
+    s.skills = skills;
+  });
 
-  return (
-    <>
-      <PageHead
-        description={`Professional résumé for ${fullName}, ${jobTitle} living in ${personalInformation.location}.`}
-        personalInformation={personalInformation}
-        title={`Résumé | ${fullName} | ${personalInformation.location}`}
-      />
-
-      <div className={styles.pdfLayout}>
-        <div className={styles.pdfSidebar}>
-          <Header
-            pdf
-            subtitle={personalInformation.job_title}
-            title={fullName}
-          />
-          <Section color="light" pdf>
-            <AboutMe personalInformation={personalInformation} />
-            <div className="mt-xs" />
-            <ContactInformation personalInformation={personalInformation} />
-            <Skills skills={skills} />
-          </Section>
-        </div>
-
-        <div className={styles.pdfMain}>
-          <Section color="white" pdf>
-            <SectionHeader icon={faBriefcase} text="Professional Experience" />
-            {professionalExperiences.map((experience) => (
-              <ProfessionalItem
-                end_date={
-                  experience.end_date
-                    ? formatDate(CMS.parseDate(experience.end_date))
-                    : null
-                }
-                id={experience.id}
-                is_current={experience.is_current}
-                key={experience.id}
-                organization_name={experience.organization_name}
-                pdf
-                position_description={
-                  <CMS.RichTextComponent
-                    richText={experience.position_description}
-                  />
-                }
-                position_title={experience.position_title}
-                start_date={formatDate(CMS.parseDate(experience.start_date))}
-              />
-            ))}
-
-            <div className="mt-xs" />
-
-            <SectionHeader icon={faGraduationCap} text="Education" />
-            {educationalExperiences.map((experience) => (
-              <EducationItem
-                achievement_description={
-                  <CMS.RichTextComponent
-                    richText={experience.achievement_description}
-                  />
-                }
-                achievement_title={experience.achievement_title}
-                id={experience.id}
-                key={experience.id}
-                organization_name={experience.organization_name}
-                pdf
-                year={experience.year}
-              />
-            ))}
-
-            <div className="mt-xs" />
-
-            <HobbiesAndInterests personalInformation={personalInformation} />
-          </Section>
-        </div>
-      </div>
-    </>
-  );
+  return <Resume pdf={true} />;
 };
 
 export default ResumePage;
