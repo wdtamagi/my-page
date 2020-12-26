@@ -4,8 +4,6 @@ import React from 'react';
 export const GlobalStyle = (
   <Global
     styles={css`
-      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,100&display=swap');
-
       html,
       body {
         margin: 0;
@@ -13,6 +11,7 @@ export const GlobalStyle = (
         height: 100%;
         font-family: 'Roboto', sans-serif;
         font-size: 24px;
+        color: #212121;
       }
 
       #__next {
