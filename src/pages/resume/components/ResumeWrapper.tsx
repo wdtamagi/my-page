@@ -18,7 +18,7 @@ const ResumeWraper: FC<ResumeWraperProps> = ({ children }) => (
         left: 0;
         width: 40%;
         height: 100%;
-        background-color: #bcbcc1;
+        background-color: #dcdce0;
         z-index: -1;
       `}
     />
@@ -29,11 +29,11 @@ const ResumeWraper: FC<ResumeWraperProps> = ({ children }) => (
         left: 40%;
         width: 60%;
         height: 100%;
-        background-color: whitesmoke;
+        background-color: #f9f9f9;
         z-index: -1;
       `}
     />
-    {children}
+    <div>{children}</div>
   </div>
 );
 

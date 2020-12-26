@@ -1,11 +1,28 @@
-import { css } from '@emotion/react';
 import { InferGetStaticPropsType } from 'next';
 import React, { FC } from 'react';
 
-import ResumeWrapper from './components/ResumeWrapper';
-import { getCMSIntegration } from '../../cms/';
+import { getCMSIntegration } from 'src/cms';
+import {
+  CMSPersonalInformation,
+  CMSEducationalExperience,
+  CMSLink,
+  CMSPRofessionalExperience,
+  CMSSkills,
+  useResumeStore,
+} from 'src/store/useResumeStore';
 
-export const getStaticProps = async () => {
+import Resume from './components/Resume';
+
+export const getStaticProps = async (): Promise<{
+  props: {
+    educationalExperiences: CMSEducationalExperience[];
+    links: CMSLink[];
+    personalInformation: CMSPersonalInformation;
+    professionalExperiences: CMSPRofessionalExperience[];
+    skills: CMSSkills[];
+  };
+  revalidate: number;
+}> => {
   const CMS = getCMSIntegration();
   const personalInformation = await CMS.getPersonalInformation();
   const professionalExperiences = await CMS.getProfessionalExperiences();
@@ -34,28 +51,16 @@ const ResumePage: FC<ResumePageProps> = ({
   professionalExperiences,
   skills,
 }) => {
-  return (
-    <div
-      css={css`
-        display: grid;
-        grid-template-columns:
-          1fr
-          min(65ch, 100%)
-          1fr;
-        width: 100%;
-        height: 100%;
+  const set = useResumeStore((s) => s.set);
+  set((s) => {
+    s.educationalExperiences = educationalExperiences;
+    s.links = links;
+    s.personalInformation = personalInformation;
+    s.professionalExperiences = professionalExperiences;
+    s.skills = skills;
+  });
 
-        & > * {
-          grid-column: 2;
-        }
-      `}
-    >
-      <ResumeWrapper>
-        <span>{personalInformation.given_name}</span>
-        <span>{personalInformation.family_name}</span>
-      </ResumeWrapper>
-    </div>
-  );
+  return <Resume />;
 };
 
 export default ResumePage;
