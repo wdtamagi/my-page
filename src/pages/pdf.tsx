@@ -60,7 +60,7 @@ const ResumePage: FC<ResumePageProps> = ({
     s.skills = skills;
   });
 
-  return <Resume pdf={true} />;
+  return <Resume />;
 };
 
 export default ResumePage;
