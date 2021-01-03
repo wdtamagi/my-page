@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useResumeStore } from 'src/store/useResumeStore';
 
-const ResumeTitle: FC = () => {
+const ResumeTitle: React.FC = () => {
   const router = useRouter();
   const personalInformation = useResumeStore((s) => s.personalInformation);
 

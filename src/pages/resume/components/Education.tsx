@@ -1,14 +1,11 @@
 import { css } from '@emotion/react';
-import { faEnvelopeOpen, faMap } from '@fortawesome/free-regular-svg-icons';
-import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
-import { ENODATA } from 'constants';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useResumeStore } from 'src/store/useResumeStore';
 
 import SectionTitle from './SectionTitle';
 
-const Education: FC = () => {
+const Education: React.FC = () => {
   const educationalExperiences = useResumeStore(
     (s) => s.educationalExperiences,
   );

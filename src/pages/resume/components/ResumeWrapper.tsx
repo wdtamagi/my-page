@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React from 'react';
 
 interface ResumeWraperProps {
   children: React.ReactNode;
 }
 
-const ResumeWraper: FC<ResumeWraperProps> = ({ children }) => {
+const ResumeWraper: React.FC<ResumeWraperProps> = ({ children }) => {
   const router = useRouter();
 
   const isPdf = router.pathname === '/pdf' || router.pathname === '/api/pdf';

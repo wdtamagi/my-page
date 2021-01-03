@@ -1,9 +1,9 @@
-import { faDownload, faPrint } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { css } from '@emotion/react';
 import Tippy from '@tippyjs/react';
 import { useRouter } from 'next/router';
-import React, { FC } from 'react';
+import React from 'react';
 
 import 'tippy.js/dist/tippy.css';
 
@@ -16,7 +16,7 @@ import Skills from './Skills';
 import Experience from './Experience';
 import Links from './Links';
 
-const Resume: FC = () => {
+const Resume: React.FC = () => {
   const router = useRouter();
   const isPdf = router.pathname === '/pdf' || router.pathname === '/api/pdf';
 

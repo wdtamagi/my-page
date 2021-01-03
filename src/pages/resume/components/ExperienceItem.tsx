@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { RichText } from 'prismic-reactjs';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { CMSPRofessionalExperience } from 'src/store/useResumeStore';
 
@@ -8,7 +8,7 @@ interface ExperienceItemProps {
   item: CMSPRofessionalExperience;
 }
 
-const ExperienceItem: FC<ExperienceItemProps> = ({ item }) => (
+const ExperienceItem: React.FC<ExperienceItemProps> = ({ item }) => (
   <div
     css={css`
       display: flex;

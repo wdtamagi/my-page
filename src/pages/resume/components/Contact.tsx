@@ -1,14 +1,14 @@
 import { css } from '@emotion/react';
 import { faEnvelopeOpen, faMap } from '@fortawesome/free-regular-svg-icons';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useResumeStore } from 'src/store/useResumeStore';
 
 import ContactItem from './ContactItem';
 import SectionTitle from './SectionTitle';
 
-const Contact: FC = () => {
+const Contact: React.FC = () => {
   const personalInformation = useResumeStore((s) => s.personalInformation);
 
   return (

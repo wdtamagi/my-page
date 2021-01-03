@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType } from 'next';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { getCMSIntegration } from 'src/cms';
 import {
@@ -44,7 +44,7 @@ export const getStaticProps = async (): Promise<{
 
 type ResumePageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ResumePage: FC<ResumePageProps> = ({
+const ResumePage: React.FC<ResumePageProps> = ({
   personalInformation,
   educationalExperiences,
   links,

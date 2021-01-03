@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useResumeStore } from 'src/store/useResumeStore';
 
 import SectionTitle from './SectionTitle';
 import ExperienceItem from './ExperienceItem';
 
-const Experience: FC = () => {
+const Experience: React.FC = () => {
   const professionalExperiences = useResumeStore(
     (s) => s.professionalExperiences,
   );

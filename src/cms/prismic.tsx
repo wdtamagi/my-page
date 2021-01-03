@@ -7,18 +7,23 @@ import {
 } from 'prismic-reactjs';
 import React from 'react';
 import { accessToken, apiEndpoint } from '.';
-import { CMSLink } from '../_types/CMSLink';
+import {
+  CMSEducationalExperience,
+  CMSLink,
+  CMSPRofessionalExperience,
+  CMSPersonalInformation,
+  CMSSkills,
+} from 'src/store/useResumeStore';
 
 export type PrismicRichText = RichTextBlock[];
-type PersonalInformation = CMSPersonalInformation<PrismicRichText>;
-type PrivateInformation = CMSPrivateInformation<PrismicRichText>;
-type ProfessionalExperience = CMSPRofessionalExperience<PrismicRichText>;
-type EducationalExperience = CMSEducationalExperience<PrismicRichText>;
 
 export const prismicCMSName = 'Prismic';
 export const prismicCMSLink = 'https://prismic.io/';
 
-const createClientOptions = (req = null, prismicAccessToken = null) => {
+const createClientOptions = (
+  req = null,
+  prismicAccessToken: string | null = null,
+) => {
   const reqOption = req ? { req } : {};
   const accessTokenOption = prismicAccessToken
     ? { accessToken: prismicAccessToken }
@@ -30,31 +35,15 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
 };
 
 const cmsClient = (req = null): DefaultClient =>
-  prismic.client(apiEndpoint, createClientOptions(req, accessToken));
+  prismic.client(apiEndpoint ?? '', createClientOptions(req, accessToken));
 
-export const prismicGetPersonalInformation = async (): Promise<PersonalInformation> => {
+export const prismicGetPersonalInformation = async (): Promise<CMSPersonalInformation> => {
   const document = await cmsClient().getSingle('personal_information', {});
   return { id: document.id, ...document.data };
 };
 
-export const prismicGetPrivateInformation = async (): Promise<
-  PrivateInformation[]
-> => {
-  const document = await cmsClient().query(
-    prismic.Predicates.at('document.type', 'private_information'),
-    {
-      orderings: '[my.private_information.label]',
-    },
-  );
-  const experiences = document.results.map((document) => ({
-    id: document.id,
-    ...document.data,
-  }));
-  return experiences;
-};
-
 export const prismicGetProfessionalExperiences = async (): Promise<
-  ProfessionalExperience[]
+  CMSPRofessionalExperience[]
 > => {
   const document = await cmsClient().query(
     prismic.Predicates.at('document.type', 'professional_experience'),
@@ -71,7 +60,7 @@ export const prismicGetProfessionalExperiences = async (): Promise<
 };
 
 export const prismicGetEducationalExperiences = async (): Promise<
-  EducationalExperience[]
+  CMSEducationalExperience[]
 > => {
   const document = await cmsClient().query(
     prismic.Predicates.at('document.type', 'educational_experience'),

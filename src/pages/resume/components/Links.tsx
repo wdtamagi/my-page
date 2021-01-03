@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { FC } from 'react';
+import React from 'react';
 
 import { useResumeStore } from 'src/store/useResumeStore';
 
 import SectionTitle from './SectionTitle';
 
-const Links: FC = () => {
+const Links: React.FC = () => {
   const links = useResumeStore((s) => s.links);
 
   return (

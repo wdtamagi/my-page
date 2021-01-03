@@ -1,5 +1,7 @@
+import { CMSPersonalInformation } from './store/useResumeStore';
+
 export const getFullName = (
-  personalInformation: CMSPersonalInformation<unknown>,
+  personalInformation: CMSPersonalInformation,
 ): string => {
   return `${personalInformation.given_name} ${personalInformation.family_name}`;
 };

@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
-import React, { FC } from 'react';
+import React from 'react';
 
 interface SectionTitleProps {
   title: React.ReactNode;
 }
-const SectionTitle: FC<SectionTitleProps> = ({ title }) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ title }) => {
   return (
     <span
       css={css`
