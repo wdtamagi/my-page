@@ -57,11 +57,11 @@ const MainPage: React.FC = () => {
         display: grid;
         grid-template-columns:
           1fr
-          min(65ch, 100%)
+          min(65ch, calc(100% - 1rem))
           1fr;
         width: 100%;
         height: 100%;
-        padding: 3rem 0;
+        padding: 3rem 1rem;
 
         & > * {
           grid-column: 2;
