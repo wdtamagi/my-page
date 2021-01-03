@@ -4,7 +4,7 @@ import { AppPropsType } from 'next/dist/next-server/lib/utils';
 import Head from 'next/head';
 import React from 'react';
 
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from '../global/GlobalStyle';
 
 config.autoAddCss = false;
 library.add(fab);
