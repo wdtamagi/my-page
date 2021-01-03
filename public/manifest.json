@@ -1,6 +1,6 @@
 {
-  "name": "Your Name's Professional Résumé",
-  "short_name": "Your Name",
+  "name": "Willian page",
+  "short_name": "Will's page",
   "icons": [
     {
       "src": "/img/icons/favicon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#33333d",
-  "description": "Your professional description.",
+  "description": "Willian personal page",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#0073e6"
