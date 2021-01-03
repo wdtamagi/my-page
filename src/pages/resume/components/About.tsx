@@ -21,7 +21,6 @@ const About: React.FC = () => {
         css={css`
           font-size: 15px;
           font-weight: 300;
-          text-align: justify;
           letter-spacing: 0.1rem;
         `}
       >

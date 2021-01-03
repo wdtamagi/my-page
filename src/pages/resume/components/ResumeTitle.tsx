@@ -19,7 +19,7 @@ const ResumeTitle: React.FC = () => {
     ${!isPdf
       ? `
       @media (max-width: 575px) {
-        font-size: 60px;
+        font-size: 55px;
       }
       @media (max-width: 20.99cm) and (min-width: 576px) {
         font-size: 100px;

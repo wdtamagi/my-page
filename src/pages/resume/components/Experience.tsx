@@ -31,7 +31,6 @@ const Experience: React.FC = () => {
           gap: 2rem;
           font-size: 15px;
           font-weight: 300;
-          text-align: justify;
           letter-spacing: 0.1rem;
         `}
       >
