@@ -99,16 +99,18 @@ const MainPage: React.FC = () => {
           }
           css={css`
             background: transparent;
-            border: 1px solid #696969;
+            border: 3px solid #212121;
             cursor: pointer;
+            color: #212121;
             font-size: 30px;
             font-family: 'Roboto', sans-serif;
             width: 200px;
             margin-top: 5rem;
+            padding: 0.5rem 0;
           `}
           onClick={handleClick}
         >
-          {'My Resume'}
+          Resume
         </animated.button>
       </div>
     </div>
