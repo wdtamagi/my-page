@@ -26,9 +26,21 @@ const Skills: React.FC = () => {
           list-style: circle inside;
         `}
       >
-        {skills?.map((skill) => (
-          <li key={skill.id}>{skill.skills_list}</li>
-        ))}
+        {[...(skills ?? [])]
+          ?.sort((a, b) => {
+            if (a.ord > b.ord) {
+              return 1;
+            }
+
+            if (a.ord < b.ord) {
+              return -1;
+            }
+
+            return 0;
+          })
+          .map((skill) => (
+            <li key={skill.id}>{skill.skills_list}</li>
+          ))}
       </ul>
     </div>
   );
