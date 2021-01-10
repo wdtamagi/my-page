@@ -46,11 +46,11 @@ const ResumeTitle: React.FC = () => {
               margin-bottom: 2rem;
             }
             @media (min-width: 21cm) {
-              padding: 4rem 3rem 0;
+              padding: 4rem 3rem 1rem;
             }
           `
           : `
-            padding: 4rem 3rem 0;
+            padding: 4rem 3rem 1rem;
           `}
       `}
     >
@@ -92,6 +92,9 @@ const ResumeTitle: React.FC = () => {
         <img
           src={personalInformation?.photo.url}
           alt={personalInformation?.photo.alt}
+          css={css`
+            border-radius: 50%;
+          `}
         />
       </div>
     </div>
