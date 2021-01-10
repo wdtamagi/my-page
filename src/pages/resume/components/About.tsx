@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { RichText } from 'prismic-reactjs';
 import React from 'react';
 
 import { useResumeStore } from 'src/store/useResumeStore';
@@ -24,7 +25,7 @@ const About: React.FC = () => {
           letter-spacing: 0.1rem;
         `}
       >
-        {personalInformation?.about_me_description[0].text}
+        <RichText render={personalInformation?.about_me_description} />
       </span>
     </div>
   );
