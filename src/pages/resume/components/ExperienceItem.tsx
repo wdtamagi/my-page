@@ -26,10 +26,18 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ item }) => (
       css={css`
         font-size: 12px;
         font-style: italic;
+        font-weight: 500;
       `}
     >{`${item?.organization_name} | ${item?.start_date} - ${
       item?.is_current ? 'Current' : item?.end_date
     }`}</span>
+    <span
+      css={css`
+        font-size: 12px;
+      `}
+    >
+      {item.location}
+    </span>
     <span
       css={css`
         margin-top: 0.5rem;
