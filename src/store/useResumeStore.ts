@@ -42,6 +42,7 @@ export interface CMSPRofessionalExperience {
   position_title: string;
   start_date: string;
   start: Date;
+  location: string;
 }
 
 export interface CMSSkills {
@@ -49,6 +50,7 @@ export interface CMSSkills {
   level: 1 | 2 | 3;
   level_name: string;
   skills_list: string;
+  ord: number;
 }
 
 interface InitialState {
