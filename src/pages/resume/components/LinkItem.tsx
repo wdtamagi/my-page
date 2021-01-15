@@ -25,19 +25,19 @@ const LinkItem: React.FC<LinkItemProps> = ({ link }) => {
       <a
         onMouseEnter={trigger}
         style={style}
-        href={link.href}
+        href={link?.href}
         rel="noreferrer"
         target="_blank"
       >
         <FontAwesomeIcon
           color="#212121"
-          icon={['fab', link.icon_name]}
+          icon={['fab', link?.icon_name]}
           css={css`
             height: 25px;
             transition: color 500ms;
 
             &:hover {
-              color: ${iconColors[link.icon_name]};
+              color: ${iconColors[link?.icon_name]};
             }
           `}
         />

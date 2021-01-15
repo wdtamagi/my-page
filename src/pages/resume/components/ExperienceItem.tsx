@@ -36,7 +36,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({ item }) => (
         font-size: 12px;
       `}
     >
-      {item.location}
+      {item?.location}
     </span>
     <span
       css={css`
