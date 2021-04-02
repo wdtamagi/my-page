@@ -43,7 +43,7 @@
     "@tippyjs/react": "4.2.0",
     "chrome-aws-lambda": "5.5.0",
     "contentful": "8.1.4",
-    "immer": "8.0.0",
+    "immer": "8.0.1",
     "next": "10.0.3",
     "next-offline": "5.0.3",
     "prismic-javascript": "3.0.2",
