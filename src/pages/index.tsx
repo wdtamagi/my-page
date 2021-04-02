@@ -62,6 +62,7 @@ const MainPage: React.FC = () => {
         width: 100%;
         height: 100%;
         padding: 3rem 1rem;
+        box-sizing: border-box;
 
         & > * {
           grid-column: 2;
