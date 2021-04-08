@@ -12,25 +12,25 @@ const MainPage: React.FC = () => {
   const buttonRef = useRef(null);
 
   const fristProp = useSpring({
-    config: { duration: 800 },
+    config: { duration: 700 },
     from: { opacity: 0 },
     ref: fristRef,
     to: { opacity: 1 },
   });
   const secondProp = useSpring({
-    config: { duration: 800 },
+    config: { duration: 700 },
     from: { opacity: 0 },
     ref: secondRef,
     to: { opacity: 1 },
   });
   const thirdProp = useSpring({
-    config: { duration: 800 },
+    config: { duration: 700 },
     from: { opacity: 0 },
     ref: thirdRef,
     to: { opacity: 1 },
   });
   const buttonProp = useSpring({
-    config: { duration: 800 },
+    config: { duration: 700 },
     from: { opacity: 0 },
     ref: buttonRef,
     to: { opacity: 1 },
