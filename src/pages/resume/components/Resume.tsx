@@ -37,7 +37,7 @@ const Resume: React.FC = () => {
         }
 
         @page {
-          size: 22cm 125cm;
+          size: 22cm 130cm;
         }
       `}
     >
