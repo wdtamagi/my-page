@@ -30,7 +30,6 @@ const handler = async (
   const page = await browser.newPage();
   await page.goto(`${protocol}://${url}/${path}`);
   const pdf = await page.pdf({
-    path: 'resume-will.pdf',
     displayHeaderFooter: false,
     format: 'Letter',
     landscape: false,
