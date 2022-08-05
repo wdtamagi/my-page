@@ -16,7 +16,7 @@ const handler = async (
 ): Promise<void> => {
   const protocol = req.headers['x-forwarded-proto'] || 'http';
 
-  const path = 'will-resume';
+  const path = 'pdf';
 
   const browser = await puppeteer.launch(
     !isDev
